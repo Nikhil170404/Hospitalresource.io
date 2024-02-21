@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <title>Hospital Search</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add your custom styles here */
+    .hospital-card {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
     <header class="header">
@@ -56,8 +62,29 @@
     </section>
     <section id="hospitalListSection">
       <h2>Hospitals Near Your Location</h2>
-      <ul id="hospitalList"></ul>
+      <div class="container">
+        <div class="row" id="hospitalList">
+          <!-- Hospitals will be displayed here -->
+        </div>
+      </div>
     </section>
+    
+    <!-- Hospital Details Modal -->
+    <div class="modal" id="hospitalDetailsModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Hospital Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="hospitalDetailsContent">
+            <!-- Hospital details will be displayed here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
   </main>
   <footer>
     <p>&copy; 2024 Hospital Search</p>
@@ -66,15 +93,115 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navList = document.querySelector('.nav-list');
+    const searchButton = document.getElementById('searchButton');
+    const locationInput = document.getElementById('locationInput');
 
-  mobileMenu.addEventListener('click', function() {
-    navList.classList.toggle('menu-open');
-  });
+    searchButton.addEventListener('click', function() {
+        const location = locationInput.value.trim();
+        if (location !== '') {
+            const hospitalsNearLocation = getHospitalsNearLocation(location);
+            displayHospitalList(hospitalsNearLocation);
+        } else {
+            alert('Please enter a location.');
+        }
+    });
+
+    function getHospitalsNearLocation(location) {
+        // Dummy data for demonstration
+        const hospitals = [
+            // Hospital data here...
+            { name: 'Disha Hospital', address: 'AG Jambhulpada, AG Link Road Landmark: Near Jagruti Nagar Metro Station Ghatkopar West, Mumbai, Mumbai', bedsAvailable: 2, facilities: 'Emergency Care, ICU, Pediatrics' },
+                { name: 'Sarvoda Hospital', address: 'Sarvoda Temple Near GhatKopar Station ,Mumbai', bedsAvailable: 5, facilities: 'Surgery, Radiology, Cardiology' },
+                { name: 'Shree Kandivali Hitwardhak Mandal Hospital', address: 'Kandivali West, Mumbai', bedsAvailable: 15, facilities: 'Orthopedics, Neurology, Oncology' },
+                { name: 'Hospital A', address: '123 Main St, Nalasopara', bedsAvailable: 10, facilities: 'Dermatology, Ophthalmology, Psychiatry' },
+                { name: 'Hospital B', address: '456 Elm St, Mumbai', bedsAvailable: 5, facilities: 'ENT, Urology, Gynecology' },
+                { name: 'Hospital C', address: '789 Oak St, Ghatkopar', bedsAvailable: 15, facilities: 'Pathology, Endocrinology, Pulmonology' },
+                { name: 'AIIMS Delhi', address: 'Sri Aurobindo Marg, Ansari Nagar, New Delhi', bedsAvailable: 1500, facilities: ['Cardiology', 'Neurology', 'Oncology'] },
+        { name: 'Apollo Hospitals, Chennai', address: 'Greams Lane, Off Greams Road, Chennai', bedsAvailable: 1200, facilities: ['Orthopedics', 'Gastroenterology', 'Dermatology'] },
+        { name: 'Ruby Hall Clinic, Pune', address: 'Sassoon Road, Pune', bedsAvailable: 800, facilities: ['Pediatrics', 'Obstetrics', 'ENT'] },
+        { name: 'Fortis Hospital, Mumbai', address: 'Mulund Goregaon Link Rd, Mulund West, Mumbai', bedsAvailable: 1000, facilities: ['Cardiac Surgery', 'Urology', 'Nephrology'] },
+        { name: 'Narayana Health, Bengaluru', address: 'Bommasandra Industrial Area, Hosur Road, Bengaluru', bedsAvailable: 1100, facilities: ['Endocrinology', 'Rheumatology', 'Ophthalmology'] },
+        // Add more hospitals here
+        { name: 'Apollo Hospitals, Hyderabad', address: 'Jubilee Hills, Hyderabad', bedsAvailable: 1300, facilities: ['Pulmonology', 'Psychiatry', 'Radiology'] },
+        { name: 'Care Hospitals, Hyderabad', address: 'Banjara Hills, Hyderabad', bedsAvailable: 900, facilities: ['Gynecology', 'Hematology', 'Neurosurgery'] },
+        { name: 'KIMS Hospital, Hyderabad', address: 'Secunderabad, Hyderabad', bedsAvailable: 1000, facilities: ['Plastic Surgery', 'Gynecologic Oncology', 'Dental'] },
+        { name: 'Yashoda Hospitals, Hyderabad', address: 'Somajiguda, Hyderabad', bedsAvailable: 1100, facilities: ['Dermatology', 'Physical Therapy', 'Neonatology'] },
+        { name: 'Continental Hospitals, Hyderabad', address: 'Gachibowli, Hyderabad', bedsAvailable: 950, facilities: ['Oncology', 'Nuclear Medicine', 'Allergy & Immunology'] },
+        { name: 'Global Hospitals, Hyderabad', address: 'Lakdi-ka-pul, Hyderabad', bedsAvailable: 850, facilities: ['Hepatology', 'Transplant Surgery', 'Geriatrics'] },
+        { name: 'Sunshine Hospitals, Hyderabad', address: 'Paradise Circle, Secunderabad', bedsAvailable: 800, facilities: ['Rheumatology', 'Vascular Surgery', 'Pain Management'] },
+        { name: 'Asian Institute of Gastroenterology, Hyderabad', address: 'Somajiguda, Hyderabad', bedsAvailable: 900, facilities: ['Hematopathology', 'Sleep Medicine', 'Interventional Radiology'] },
+        { name: 'Star Hospitals, Hyderabad', address: 'Banjara Hills, Hyderabad', bedsAvailable: 950, facilities: ['Podiatry', 'Sleep Medicine', 'Neurotology'] },
+        { name: 'Krishna Institute of Medical Sciences (KIMS), Secunderabad', address: 'Minister Road, Secunderabad', bedsAvailable: 1000, facilities: ['Neurology', 'Pulmonary Critical Care', 'Infectious Disease'] },
+        // Add more hospitals here
+                // Your hospital data here...
+        ];
+
+        // Filter hospitals based on the city name
+        const hospitalsInCity = hospitals.filter(hospital => {
+            // Assuming the city name is part of the hospital's address
+            return hospital.address.toLowerCase().includes(location.toLowerCase());
+        });
+
+        return hospitalsInCity;
+    }
+
+    function displayHospitalList(hospitals) {
+        const hospitalList = document.getElementById('hospitalList');
+        hospitalList.innerHTML = ''; // Clear previous entries
+
+        hospitals.forEach(hospital => {
+            const listItem = document.createElement('div');
+            listItem.classList.add('col-md-4', 'hospital-card');
+            listItem.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${hospital.name}</h5>
+                        <p class="card-text"><strong>Address:</strong> ${hospital.address}</p>
+                        <p class="card-text"><strong>Beds Available:</strong> ${hospital.bedsAvailable}</p>
+                        <button class="btn btn-secondary details-button">Details</button>
+                        <div class="hospital-details d-none">
+                            <h5>Hospital Details</h5>
+                            <p><strong>Name:</strong> ${hospital.name}</p>
+                            <p><strong>Address:</strong> ${hospital.address}</p>
+                            <p><strong>Beds Available:</strong> ${hospital.bedsAvailable}</p>
+                            <p><strong>Facilities:</strong></p>
+                            <ul>
+                                ${
+                                    Array.isArray(hospital.facilities)
+                                        ? hospital.facilities.map(facility => `<li>${facility}</li>`).join('')
+                                        : `<li>${hospital.facilities}</li>`
+                                }
+                            </ul>
+                            <h5>Additional Details</h5>
+                            <ul>
+                                <li>Point 1</li>
+                                <li>Point 2</li>
+                                <li>Point 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+            hospitalList.appendChild(listItem);
+
+            const detailButton = listItem.querySelector('.details-button');
+            detailButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                const hospitalDetails = listItem.querySelector('.hospital-details');
+                // Toggle the visibility of the hospital details
+                hospitalDetails.classList.toggle('d-none');
+                // Collapse other expanded hospital details
+                const otherDetails = document.querySelectorAll('.hospital-details:not(.d-none)');
+                otherDetails.forEach(otherDetail => {
+                    if (otherDetail !== hospitalDetails) {
+                        otherDetail.classList.add('d-none');
+                    }
+                });
+            });
+        });
+    }
 });
 
-    
-  </script>
+</script>
 </body>
 </html>
