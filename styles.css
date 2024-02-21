@@ -1,3 +1,4 @@
+/* General styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,16 +6,7 @@ body {
   background-color: #f2f2f2;
 }
 
-header {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 0;
-}
-
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -45,240 +37,13 @@ header {
   text-decoration: underline;
 }
 
-main {
-  padding: 20px;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 2rem;
-  color: #333;
-}
-
-p {
-  font-size: 1.2rem;
-  color: whitesmoke;
-}
-
-#introSection {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-image: url('hos.jpg');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.intro-container {
-  max-width: 800px;
-}
-
-#searchSection {
-  margin-top: 20px;
-}
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#locationInput {
-  padding: 10px;
-  font-size: 1rem;
-}
-
-#searchButton {
-  padding: 10px 20px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-#searchButton:hover {
-  background-color: #000;
-}
-
-#hospitalList {
-  list-style: none;
-  padding: 0;
-}
-
-.hospital-info {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.hospital-info h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: #333;
-  font-size: 1.5rem;
-}
-
-.hospital-info p {
-  margin: 5px 0;
-  font-size: 1.2rem;
-  color: gray;
-}
-
-.details-button {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.details-button:hover {
-  background-color: #000;
-}
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f2f2f2;
-}
-
-header {
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-}
-
-header h1 {
-  margin: 0;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-main {
-  padding: 20px;
-}
-
-#about h2 {
-  color: #333;
-}
-
-#about p {
-  color: whitesmoke;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-footer {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-}
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f2f2f2;
-}
-
-header {
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-}
-
-header h1 {
-  margin: 0;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-nav ul li a:hover {
-  background-color: #0056b3;
-}
-
-main {
-  padding: 20px;
-}
-
-#about h2 {
-  color: #333;
-}
-
-#about p {
-  color: whitesmoke;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-footer {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-}
-/* Styles for header and navigation */
+/* Header styles */
 .header {
   background-color: #000;
   color: #fff;
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  margin: 0;
-}
-
-.nav {
-  display: flex;
   align-items: center;
 }
 
@@ -296,6 +61,7 @@ footer {
   transition: transform 0.4s, opacity 0.4s;
 }
 
+/* Navigation styles */
 .nav-list {
   list-style: none;
   padding: 0;
@@ -350,4 +116,257 @@ footer {
   .menu-open .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
   }
+}
+
+/* Main content styles */
+.main-content {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-top: 0;
+}
+
+p {
+  font-size: 1.2rem;
+  color: black;
+}
+
+/* Intro section styles */
+#introSection {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url('hos.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.intro-container {
+  max-width: 800px;
+}
+
+/* Search section styles */
+#searchSection {
+  margin-top: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#locationInput {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#searchButton {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+  background-color: #000;
+}
+
+/* Hospital list section styles */
+#hospitalListSection {
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.hospital-info {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hospital-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.hospital-info p {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.details-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+  background-color: #000;
+}
+
+footer {
+  background-color: whitesmoke;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+}
+.hospital-info {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px; /* Add margin-bottom to create space between hospitals */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#hospitalListSection .list-group-item {
+  margin-bottom: 40px;
+}
+/* Hospital List Styles */
+.hospital-item {
+  margin-bottom: 20px;
+}
+
+.hospital-info {
+  border: 1px solid #ddd;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.details-button {
+  margin-top: 10px;
+}
+
+/* Hospital Details Modal Styles */
+.modal-body p {
+  margin-bottom: 10px;
+}
+/* Add your custom styles here */
+
+/* Hospital Card Styles */
+.hospital-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hospital-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.hospital-card p {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.details-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
+}
+
+/* Search Button Styles */
+#searchButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+  background-color: #0056b3;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #343a40;
+  padding: 10px 0;
+}
+
+header a {
+  color: #fff;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: black;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+footer {
+  background-color: #343a40;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Custom styles for intro section */
+#introSection {
+  text-align: center;
+  padding: 50px 0;
+}
+
+#introSection h1 {
+  font-size: 36px;
+  color: #007bff; /* Blue color */
+  margin-bottom: 20px;
+}
+
+#introSection p {
+  font-size: 18px;
+  color:black;
 }
